@@ -1,0 +1,80 @@
+<% content_for :stylesheets do %>
+
+<% end %>
+
+<%= content_for :header_title do %>
+  Help Your Child Reach Their <em>Full Potential</em> with Affordable <b>In-Home Tutoring</b>
+<% end %>
+
+<%= content_for :header_right_module do %>
+  <h2>Contact Us:</h2>
+  <div class="row">
+    <h3>Phone Number: </h3>
+    <em><a style="font-size: 2rem;">(208) 557 4393</a></em>
+  </div>
+  <div class="row">
+    <h3>Email: </h3>
+    <em><a>contact@braingainsidaho.com</a></em>
+  </div>
+<% end %>
+
+<%= content_for :main_content do %>
+  <div class="modular">
+    <div class="module testimonial">
+      <h2>Testimonial:</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut aliquip
+      </p>
+    </div>
+      <div class="module about">
+        <h2>About Our Tutoring:</h2>
+        <p>
+          We offer affordable, private in-home tutoring for all subjects
+          K-12 in the Idaho Falls and Rexburg areas. Our tutors are flexible
+          and will work according to your busy schedule.
+        </p>
+        <%= button_to "Learn More", about_path, method: :get, type: :button %>
+      </div>
+      <div class="module how-it-works">
+        <h2>How It Works</h2>
+        <p>
+          We will match your child to one of our passionate and talented
+          tutors based on your their needs. If the first tutor isn't a good
+          match for your child, no problem! We will work with you until your
+          child has the tutor that they need.
+        </p>
+        <%= button_to "Learn More", how_it_works_path, method: :get, type: :button %>
+      </div>
+      <div class="module our-tutors">
+        <h2>Our Tutors</h2>
+        <p>
+          Our tutors are bright and talented members of our community who have a
+          skill and passion for helping others academically. They are carefully selected
+          based on their skills and ability to teach effectively.
+        </p>
+      </div>
+  </div>
+<% end %>
+
+<%= content_for :additional_content do %>
+  <h2>Want more Information?</h2>
+  <%= form_with model: @lead do |form| %>
+    <legend><b>Contact us</b> any time or <b>fill out the form</b> below for more information about how you can help your child <em>achieve their dreams</em>!</legend>
+    <div class="row">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+    <div class="row">
+      <%= form.label :phone_number, "Phone Number" %>
+      <%= form.telephone_field :phone_number %>
+    </div>
+    <div class="row">
+      <%= form.label :email %>
+      <%= form.email_field :email %>
+    </div>
+    <%= form.submit "Submit", class: "brown-button button row" %>
+  <% end %>
+<% end %>

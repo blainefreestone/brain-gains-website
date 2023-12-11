@@ -1,0 +1,39 @@
+<%= content_for :header_title do %>
+  <em>About</em> Brain Gains Tutoring Idaho
+<% end %>
+
+<%= content_for :header_right_module do %>
+  <h2>Contact Us:</h2>
+  <div class="row">
+    <h3>Phone Number: </h3>
+    <em><a style="font-size: 2rem;">(208) 557 4393</a></em>
+  </div>
+  <div class="row">
+    <h3>Email: </h3>
+    <em><a>contact@braingainsidaho.com</a></em>
+  </div>
+<% end %>
+
+<% content_for :main_content do %>
+  Page currently under <em>construction</em>.
+<% end %>
+
+<% content_for :additional_content do %>
+  <h2>Want more Information?</h2>
+  <%= form_with model: @lead do |form| %>
+    <legend><b>Contact us</b> any time or <b>fill out the form</b> below for more information about how you can help your child <em>achieve their dreams</em>!</legend>
+    <div class="row">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+    <div class="row">
+      <%= form.label :phone_number, "Phone Number" %>
+      <%= form.telephone_field :phone_number %>
+    </div>
+    <div class="row">
+      <%= form.label :email %>
+      <%= form.email_field :email %>
+    </div>
+    <%= form.submit "Submit", class: "brown-button button row" %>
+  <% end %>
+<% end %>

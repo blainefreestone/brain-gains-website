@@ -1,16 +1,36 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BrainGainsWebsite</title>
+    <title>BrainGainsIdaho</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <style> <%= yield :stylesheets %> </style>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <div class="header">
+      <%= image_tag("braingainsidaho-white.svg", class:"logo") %>
+      <div class="title">
+        <%= yield :header_title if content_for :header_title %>
+      </div>
+      <div class="right-module">
+        <%= yield :header_right_module if content_for :header_right_module %>
+      </div>
+    </div>
+    <div class="content">
+      <div class="main">
+        <%= yield :main_content if content_for :main_content %>
+      </div>
+      <div class="additional">
+        <%= yield :additional_content if content_for :additional_content %>
+      </div>
+    </div>
     <%= yield %>
   </body>
 </html>
