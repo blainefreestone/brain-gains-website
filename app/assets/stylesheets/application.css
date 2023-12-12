@@ -198,6 +198,7 @@ input[type="submit"] {
 
   .header .logo {
     height: 12rem;
+    margin: 2rem;
   }
 
   .header .right-module {
@@ -221,7 +222,7 @@ input[type="submit"] {
   }
 
   .content .additional {
-    margin: 2rem 4rem .5rem 4rem;
+    margin: 2rem 1rem .5rem 1rem;
   }
 
   .mobile-hide {
