@@ -101,6 +101,18 @@ body {
   border-radius: 8px;
 }
 
+/* Additional Styling */
+
+.alert {
+  font-size: .75rem;
+  color: red;
+}
+
+.success {
+  font-size: 1rem;
+  color: green;
+}
+
 /* Button styling */
 
 button,

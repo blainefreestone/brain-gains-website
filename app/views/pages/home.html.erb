@@ -60,21 +60,5 @@
 <% end %>
 
 <%= content_for :additional_content do %>
-  <h2>Want more Information?</h2>
-  <%= form_with model: @lead do |form| %>
-    <legend><b>Contact us</b> any time or <b>fill out the form</b> below for more information about how you can help your child <em>achieve their dreams</em>!</legend>
-    <div class="row">
-      <%= form.label :name %>
-      <%= form.text_field :name %>
-    </div>
-    <div class="row">
-      <%= form.label :phone_number, "Phone Number" %>
-      <%= form.telephone_field :phone_number %>
-    </div>
-    <div class="row">
-      <%= form.label :email %>
-      <%= form.email_field :email %>
-    </div>
-    <%= form.submit "Submit", class: "brown-button button row" %>
-  <% end %>
+  <%= render partial: "leads/form" %>
 <% end %>
