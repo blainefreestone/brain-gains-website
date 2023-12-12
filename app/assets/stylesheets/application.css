@@ -115,6 +115,10 @@ body {
   color: green;
 }
 
+a {
+  color: inherit;
+}
+
 /* Button styling */
 
 button,
@@ -170,7 +174,8 @@ form {
   gap: 1rem;
 }
 
-form .row {
+form .row,
+form .field {
   display: flex;
   flex-direction: column;
   gap: .4rem;
@@ -178,7 +183,8 @@ form .row {
 
 input[type="text"],
 input[type="email"],
-input[type="tel"] {
+input[type="tel"],
+input[type="password"] {
   font-size: inherit;
   font-family: inherit;
   padding: 1rem;
