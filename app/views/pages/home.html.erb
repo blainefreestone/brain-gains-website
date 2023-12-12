@@ -7,15 +7,7 @@
 <% end %>
 
 <%= content_for :header_right_module do %>
-  <h2>Contact Us:</h2>
-  <div class="row">
-    <h3>Phone Number: </h3>
-    <em><a style="font-size: 2rem;">(208) 557 4393</a></em>
-  </div>
-  <div class="row">
-    <h3>Email: </h3>
-    <em><a>contact@braingainsidaho.com</a></em>
-  </div>
+  <%= render partial: "pages/contact_module" %>
 <% end %>
 
 <%= content_for :main_content do %>
