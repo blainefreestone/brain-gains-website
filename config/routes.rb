@@ -1,13 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  get 'pages/home'
-  get 'pages/about'
-  get 'pages/how_it_works'
-  get 'lead/home'
-  get 'lead/about'
-  get 'lead/how_it_works'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  get 'leads/new'
   get '/home', to: 'pages#home'
   get '/about', to: 'pages#about'
   get '/how_it_works', to: 'pages#how_it_works'

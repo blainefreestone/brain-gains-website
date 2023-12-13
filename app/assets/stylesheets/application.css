@@ -170,15 +170,22 @@ form {
   gap: 1rem;
 }
 
-form .row {
+form .row,
+form .field {
   display: flex;
   flex-direction: column;
   gap: .4rem;
 }
 
+form .checkbox,
+form .radio {
+  flex-direction: row;
+}
+
 input[type="text"],
 input[type="email"],
-input[type="tel"] {
+input[type="tel"],
+input[type="password"] {
   font-size: inherit;
   font-family: inherit;
   padding: 1rem;
@@ -189,6 +196,10 @@ input[type="tel"] {
 input[type="submit"] {
   margin-top: 1rem;
 }
+
+/* input[type="checkbox"] {
+  padding: 0;
+} */
 
 @media only screen and (max-width: 1250px) {
   body {
