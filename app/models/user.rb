@@ -6,6 +6,9 @@ class User < ApplicationRecord
 
   before_create :set_role
 
+  has_one :personal_information
+  accepts_nested_attributes_for :personal_information
+
   private
 
   def set_role
