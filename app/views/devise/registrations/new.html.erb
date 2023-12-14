@@ -5,6 +5,12 @@
     border: 4px solid var(--brown);
     border-radius: 8px;
   }
+
+  @media only screen and (max-width: 1250px) {
+    .content .main {
+      margin: 1.75rem 1rem;
+    }
+  }
 <% end %>
 
 <%= content_for :header_title do %>
@@ -12,8 +18,7 @@
 <% end %>
 
 <%= content_for :header_right_module do %>
-  <h2>Navigation</h2>
-  <%= render "devise/shared/links" %>
+  <%= render partial: "pages/contact_module" %>
 <% end %>
 
 <%= content_for :main_content do %>
@@ -40,11 +45,11 @@
 
     <div class="field">
       <div class="radio">
-        <%= f.radio_button :student, true %>
+        <%= f.radio_button :student, true, checked: true %>
         <%= f.label :student_true, "I am a student" %>
       </div>
       <div class="radio">
-        <%= f.radio_button :student, false %>
+        <%= f.radio_button :student, false, checked: false %>
         <%= f.label :student_false, "I am a tutor" %>
       </div>
     </div>
@@ -55,6 +60,6 @@
   <% end %>
   
   <%= content_for :additional_content do %>
-
+    <%= render "devise/shared/links" %>
   <% end %>
 <% end %>
