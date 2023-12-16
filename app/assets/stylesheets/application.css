@@ -182,6 +182,14 @@ form .radio {
   flex-direction: row;
 }
 
+form select {
+  width: 6rem;
+  font-size: inherit;
+  padding: .5rem;
+  border-radius: 20px;
+  background-color: var(--white);
+}
+
 input[type="text"],
 input[type="email"],
 input[type="tel"],
