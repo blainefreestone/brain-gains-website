@@ -1,17 +1,17 @@
-<%= content_for :stylesheets do %>
-  a {
+<% content_for :stylesheets do %>
+  .access {
     text-decoration: none;
     color: var(--blue);
   }
 
   @media only screen and (max-width: 1250px) {
-    a {
+    .access {
       margin: 0 0 0 1rem;
     }
   }
 <% end %>
 
-<%= link_to "Access Student / Tutor Portal", user_path, style: "" %>
+<%= link_to "Access Student / Tutor Portal", user_path, class: "access" %>
 
 <%= content_for :header_title do %>
   <em>About</em> Brain Gains Tutoring Idaho
