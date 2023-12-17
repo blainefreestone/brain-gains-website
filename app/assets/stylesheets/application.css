@@ -181,6 +181,19 @@ form .field {
   gap: .4rem;
 }
 
+form .checkbox,
+form .radio {
+  flex-direction: row;
+}
+
+form select {
+  width: 6rem;
+  font-size: inherit;
+  padding: .5rem;
+  border-radius: 20px;
+  background-color: var(--white);
+}
+
 input[type="text"],
 input[type="email"],
 input[type="tel"],
@@ -194,6 +207,18 @@ input[type="password"] {
 
 input[type="submit"] {
   margin-top: 1rem;
+}
+
+/* Specific Styling */
+
+.header .right-module .low-margin {
+  margin: .5rem 0;
+}
+
+.header .right-module .small-brown-link {
+  text-decoration: none;
+  color: var(--brown);
+  font-size: 1.1rem;
 }
 
 @media only screen and (max-width: 1250px) {

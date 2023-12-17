@@ -1,0 +1,71 @@
+<%= content_for :stylesheets do %>
+  .content .main {
+    margin: 1.75rem 0 0 0;
+    padding: 1rem;
+    border: 4px solid var(--brown);
+    border-radius: 8px;
+  }
+
+  @media only screen and (max-width: 1250px) {
+    .content .main {
+      margin: 1.75rem 1rem;
+    }
+  }
+<% end %>
+
+<%= content_for :header_title do %>
+  <em>Edit</em> Your Brain Gains Tutoring <em>Account Information</em>
+<% end %>
+
+<%= content_for :header_right_module do %>
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel perferendis adipisci magnam! Repellat obcaecati necessitatibus neque iste quis, nisi praesentium, hic labore fugiat totam fuga, ullam non quasi ea tempora.
+<% end %>
+
+<%= content_for :main_content do %>
+  <h3>Update Account Information</h3>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
+      <%= f.password_field :password, autocomplete: "new-password" %>
+      <% if @minimum_password_length %>
+        <br />
+        <em><%= @minimum_password_length %> characters minimum</em>
+      <% end %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
+      <%= f.password_field :current_password, autocomplete: "current-password" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Update", class: "button" %>
+    </div>
+  <% end %>
+
+  <h3>Delete Account</h3>
+
+  <%= button_to "Delete Account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %>
+<% end %>
+
+<%= content_for :additional_content do %>
+  <%= link_to "Back", :back %><br />
+  <%= render "devise/shared/links" %>
+<% end %>

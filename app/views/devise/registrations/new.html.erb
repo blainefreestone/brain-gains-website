@@ -1,0 +1,65 @@
+<%= content_for :header_title do %>
+  <em>Create</em> a Brain Gains Tutoring <em>Account</em>
+<% end %>
+
+<%= content_for :header_right_module do %>
+  <%= render partial: "pages/contact_module" %>
+<% end %>
+
+<%= content_for :main_content do %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "modular" }) do |f| %>
+    <div class="module" style="display: flex; flex-direction: column; gap: 1rem;">
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="field">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+      <div class="field">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+      <span style="font-size: .8rem; font-weight: bold;">(<%= @minimum_password_length %> characters minimum)</span>
+        <% end %>
+        <%= f.password_field :password, autocomplete: "new-password" %>
+      </div>
+      <div class="field">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+      <div class="field">
+        <div class="radio">
+          <%= f.radio_button :student, true, checked: true %>
+          <%= f.label :student_true, "I am a student" %>
+        </div>
+        <div class="radio">
+          <%= f.radio_button :student, false, checked: false %>
+          <%= f.label :student_false, "I am a tutor" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="module">
+      <%= f.fields_for :personal_information do |sub_f| %>
+        <div class="field">
+          <%= sub_f.label :first_name %>
+          <%= sub_f.text_field :first_name %>
+        </div>
+        <div class="field">
+          <%= sub_f.label :last_name %>
+          <%= sub_f.text_field :last_name %>
+        </div>
+        <div class="field">
+          <%= sub_f.label :phone_number %>
+          <%= sub_f.text_field :phone_number %>
+        </div>
+      <% end %>
+      <div class="actions" style="display: flex; flex-direction: column;">
+        <%= f.submit "Sign up", class: "button", style: "align-self: center;" %>
+      </div>
+        <% end %>
+    </div>
+<% end %>
+
+
+<%= content_for :additional_content do %>
+  <%= render "devise/shared/links" %>
+<% end %>

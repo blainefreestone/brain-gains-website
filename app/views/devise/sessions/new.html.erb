@@ -1,0 +1,54 @@
+<%= content_for :stylesheets do %>
+  <%# .content .main {
+    margin: 1.75rem 0 0 0;
+    padding: 1rem;
+    border: 4px solid var(--brown);
+    border-radius: 8px;
+  }
+
+  @media only screen and (max-width: 1250px) {
+    .content .main {
+      margin: 1.75rem 1rem;
+    }
+  } %>
+<% end %>
+
+<%= content_for :header_title do %>
+  <em>Log In</em> to your Brain Gains Tutoring <em>Account</em>
+<% end %>
+
+<%= content_for :header_right_module do %>
+  <%= render partial: "pages/contact_module" %>
+<% end %>
+
+<%= content_for :main_content do %>
+  <div class="modular">
+    <div class="module">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field">
+          <%= f.label :email %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
+        <div class="field">
+          <%= f.label :password %>
+          <%= f.password_field :password, autocomplete: "current-password" %>
+        </div>
+        <% if devise_mapping.rememberable? %>
+          <div class="field">
+            <div class="checkbox">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+          </div>
+        <% end %>
+        <div class="actions">
+          <%= f.submit "Log in", class: "button" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<%= content_for :additional_content do %>
+    <%= render "devise/shared/links" %>
+<% end %>

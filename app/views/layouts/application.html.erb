@@ -7,13 +7,14 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <style> <%= yield :stylesheets %> </style>
+    <style> <%= yield :stylesheets if content_for :stylesheets %> </style>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    <%= yield %>
     <div class="header">
       <%= image_tag("braingainsidaho-white.svg", class:"logo") %>
       <div class="title">
@@ -31,6 +32,5 @@
         <%= yield :additional_content if content_for :additional_content %>
       </div>
     </div>
-    <%= yield %>
   </body>
 </html>

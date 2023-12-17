@@ -1,6 +1,17 @@
 <% content_for :stylesheets do %>
+  .access {
+    text-decoration: none;
+    color: var(--blue);
+  }
 
+  @media only screen and (max-width: 1250px) {
+    .access {
+      margin: 0 0 0 1rem;
+    }
+  }
 <% end %>
+
+<%= link_to "Access Student / Tutor Portal", user_path, class: "access" %>
 
 <%= content_for :header_title do %>
   Help Your Child Reach Their <em>Full Potential</em> with Affordable <b>In-Home Tutoring</b>
