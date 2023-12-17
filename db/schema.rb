@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_14_052224) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_17_183032) do
   create_table "leads", force: :cascade do |t|
     t.string "name"
     t.string "phone_number"
@@ -25,7 +25,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_14_052224) do
     t.string "phone_number"
     t.string "street_address"
     t.string "city"
-    t.integer "zipcode"
+    t.text "zipcode"
     t.integer "grade"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

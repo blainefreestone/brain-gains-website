@@ -21,10 +21,10 @@
         <%= form.label :phone_number %>
         <%= form.text_field :phone_number %>
       </div>
-      <div class="field">
-        <%= form.label :grade %>
-        <%= form.select :grade, @grades %>
-      </div>
+      <%# <div class="field"> %>
+        <%#= form.label :grade %>
+        <%#= form.select :grade, @grades %>
+      <%# </div> %>
     </div>
     <div class="module">
       <div class="field">
@@ -44,4 +44,8 @@
       </div>
     </div>
   <% end %>
+<% end %>
+
+<%= content_for :additional_content do %>
+  <%= link_to 'Back', :back %>
 <% end %>

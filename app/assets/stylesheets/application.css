@@ -205,9 +205,17 @@ input[type="submit"] {
   margin-top: 1rem;
 }
 
-/* input[type="checkbox"] {
-  padding: 0;
-} */
+/* Specific Styling */
+
+.header .right-module .low-margin {
+  margin: .5rem 0;
+}
+
+.header .right-module .small-brown-link {
+  text-decoration: none;
+  color: var(--brown);
+  font-size: 1.1rem;
+}
 
 @media only screen and (max-width: 1250px) {
   body {

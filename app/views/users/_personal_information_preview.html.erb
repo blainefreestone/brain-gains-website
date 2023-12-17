@@ -1,0 +1,20 @@
+<div style="height: 18rem; display: flex; flex-direction: column; justify-content: space-between">
+  <div>
+    Full Name
+    <h3 class="low-margin"><%= user.personal_information.first_name + " " + user.personal_information.last_name %></h3>
+  
+    Address
+    <h3 class="low-margin">
+      <% if user.personal_information.street_address && user.personal_information.city && user.personal_information.zipcode %>
+        <%= user.personal_information.street_address + ", " + user.personal_information.city + " " + user.personal_information.zipcode %>
+      <% else %>
+        Information needed!
+      <% end %>
+    </h3>
+  
+    Phone Number
+    <h3 class="low-margin"><%= user.personal_information.phone_number %></h3>
+  </div>
+  
+  <div style="align-self: flex-end;"><%= link_to "Update Personal Information", edit_user_personal_information_path, class: "small-brown-link" %></div>
+</div>
