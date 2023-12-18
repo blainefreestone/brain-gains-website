@@ -10,12 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_18_062838) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_18_072954) do
   create_table "engagements", force: :cascade do |t|
-    t.integer "tutor_id", null: false
+    t.integer "tutor_id"
     t.integer "student_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "details"
+    t.string "subject"
+    t.text "availability"
+    t.integer "fifteen_minutes_per_week"
     t.index ["student_id"], name: "index_engagements_on_student_id"
     t.index ["tutor_id"], name: "index_engagements_on_tutor_id"
   end
