@@ -11,7 +11,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :personal_information
 
   has_many :student_engagements, foreign_key: "tutor_id", class_name: "Engagement"
-  has_many :tutor_engagements, foreign_key: "student_id", class_name: "Engagement"
+  has_one :tutor_engagement, foreign_key: "student_id", class_name: "Engagement"
 
   private
 
