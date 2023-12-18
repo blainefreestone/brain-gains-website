@@ -10,6 +10,9 @@ class User < ApplicationRecord
   has_one :personal_information
   accepts_nested_attributes_for :personal_information
 
+  has_many :student_engagements, foreign_key: "tutor_id", class_name: "Engagement"
+  has_many :tutor_engagements, foreign_key: "student_id", class_name: "Engagement"
+
   private
 
   def set_role
