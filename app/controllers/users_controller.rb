@@ -7,6 +7,8 @@ class UsersController < ApplicationController
     if current_user.tutor?
       render "tutor_show"
     elsif current_user.student?
+      @tutor = current_user.engaged_tutor
+      @engagement = current_user.tutor_engagement
       render "student_show"
     elsif current_user.admin?
       render "admin_show"

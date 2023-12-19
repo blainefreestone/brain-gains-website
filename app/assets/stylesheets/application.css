@@ -211,7 +211,7 @@ input[type="submit"] {
 
 /* Specific Styling */
 
-.header .right-module .low-margin {
+.low-margin {
   margin: .5rem 0;
 }
 
