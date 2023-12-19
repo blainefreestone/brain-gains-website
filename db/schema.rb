@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_18_072954) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_18_173626) do
   create_table "engagements", force: :cascade do |t|
     t.integer "tutor_id"
     t.integer "student_id", null: false
@@ -46,6 +46,16 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_18_072954) do
     t.index ["user_id"], name: "index_personal_informations_on_user_id"
   end
 
+  create_table "sessions", force: :cascade do |t|
+    t.date "date"
+    t.integer "engagement_id", null: false
+    t.integer "length_fifteen_minutes"
+    t.text "details"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["engagement_id"], name: "index_sessions_on_engagement_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -72,4 +82,5 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_18_072954) do
   add_foreign_key "engagements", "users", column: "student_id"
   add_foreign_key "engagements", "users", column: "tutor_id"
   add_foreign_key "personal_informations", "users"
+  add_foreign_key "sessions", "engagements"
 end
