@@ -6,6 +6,8 @@ class Engagement < ApplicationRecord
   belongs_to :tutor, class_name: "User", optional: true
   belongs_to :student, class_name: "User"
 
+  has_many :sessions
+
   def student_must_be_student
     if student && !student.student?
       errors.add(:student, "must be a student")
