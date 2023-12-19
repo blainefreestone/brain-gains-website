@@ -7,13 +7,13 @@ class Engagement < ApplicationRecord
   belongs_to :student, class_name: "User"
 
   def student_must_be_student
-    unless student.student?
+    if student && !student.student?
       errors.add(:student, "must be a student")
     end
   end
 
   def tutor_must_be_tutor
-    unless tutor.tutor?
+    if tutor && !tutor.tutor?
       errors.add(:tutor, "must be a tutor")
     end
   end
