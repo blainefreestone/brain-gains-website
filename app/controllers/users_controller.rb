@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     @user = current_user
 
     if current_user.tutor?
+      @engagements = current_user.student_engagements
       render "tutor_show"
     elsif current_user.student?
       @tutor = current_user.engaged_tutor
