@@ -18,8 +18,6 @@ class User < ApplicationRecord
   has_one :tutor_engagement, foreign_key: "student_id", class_name: "Engagement"
   has_one :engaged_tutor, through: :tutor_engagement, source: :tutor
 
-  private
-
   def set_role
     if student == true
       self.tutor = false
