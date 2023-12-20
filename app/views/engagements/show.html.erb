@@ -1,0 +1,27 @@
+<%= content_for :header_title do %>
+  <em>Engagement</em> Details
+<% end %>
+
+<%= content_for :header_right_module do %>
+  <%# <%= render partial: "personal_information_preview", locals: { user: @user } %>
+<% end %>
+
+<%= content_for :main_content do %>
+  <div class="modular">
+    <div class="module">
+      <h2>Student Information</h2>
+      Name
+      <h3><%= @engagement.student.personal_information.first_name + " " + @engagement.student.personal_information.last_name %></h2>
+      Phone Number
+      <h3 class="low-margin"><%= @engagement.student.personal_information.phone_number %></h3>
+      Address
+      <h3><%= @engagement.student.personal_information.street_address + ", " + @engagement.student.personal_information.city + " " + @engagement.student.personal_information.zipcode %></h3>
+      Grade
+      <h3 class="low-margin"><%= @engagement.student.personal_information.grade %></h3>
+    </div>
+  </div>
+<% end %>
+
+<%= content_for :additional_content do %>
+  <%#= render "login_items" %>
+<% end %>
