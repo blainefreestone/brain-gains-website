@@ -13,7 +13,7 @@
       <% if @tutor %>
         <div>
           Full Name
-          <h3 class="low-margin"><%= @tutor.personal_information.first_name + " " + @tutor.personal_information.last_name %></h3>
+          <h3 class="low-margin"><%= @tutor.full_name %></h3>
           Phone Number
           <h3 class="low-margin"><%= @tutor.personal_information.phone_number %></h3>
           Subject

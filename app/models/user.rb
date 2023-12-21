@@ -27,4 +27,14 @@ class User < ApplicationRecord
       self.tutor = true
     end
   end
+
+  def full_name
+    "#{personal_information.first_name} #{personal_information.last_name}"
+  end
+
+  def full_address
+    return nil unless personal_information.street_address.present?
+
+    "#{personal_information.street_address}, #{personal_information.city} #{personal_information.zipcode}"
+  end
 end

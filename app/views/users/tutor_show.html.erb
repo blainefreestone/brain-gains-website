@@ -14,7 +14,7 @@
     </div>
     <% @engagements.each do |engagement| %>
       <div class="module">
-        <h2><%= engagement.student.personal_information.first_name + " " + engagement.student.personal_information.last_name %></h2>
+        <h2><%= engagement.student.full_name %></h2>
         Subject
         <h3 class="low-margin"><%= engagement.subject %></h3>
         Frequency
