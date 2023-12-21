@@ -18,7 +18,7 @@
         Subject
         <h3 class="low-margin"><%= engagement.subject %></h3>
         Frequency
-        <h3 class="low-margin"><%= engagement.fifteen_minutes_per_week %> hours / week</h3>
+        <h3 class="low-margin"><%= engagement.hours_per_week %> hours / week</h3>
         Phone Number
         <h3 class="low-margin"><%= engagement.student.personal_information.phone_number %></h3>
         <%= button_to "See Engagement", user_engagement_path(engagement), method: :get, type: :button %>

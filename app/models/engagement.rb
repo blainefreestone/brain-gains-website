@@ -19,4 +19,8 @@ class Engagement < ApplicationRecord
       errors.add(:tutor, "must be a tutor")
     end
   end
+
+  def hours_per_week
+    fifteen_minutes_per_week.to_f / 4
+  end
 end
