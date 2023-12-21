@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'sessions/index'
   get 'engagements/show'
   # Static home pages
   get '/home', to: 'pages#home'
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
   resource :user, only: [:show] do
     resource :personal_information, only: [:show, :edit, :update]
     resources :engagements, only: [:show]
+    resources :sessions, only: [:index, :create, :update]
   end
 
   # Lead create
