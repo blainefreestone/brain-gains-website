@@ -15,12 +15,23 @@
     antium! Dignissimos quod architecto obcaecati voluptas?
   </div>
   <h2 class="low-margin">Logged Sessions</h2>
-  <div class="module">
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumen
-    da possimus eaque placeat fugit odio iusto? Porro,
-     tempore. Ullam natus nisi laboriosam quos ab ipsum i
-     taque facere, perspiciatis aspernatur similique distinctio!
-  </div>
+  <table class="module">
+    <tr>
+      <th>Date</th>
+      <th>Student</th>
+      <th>Hours</th>
+      <th>Details</th>
+    </tr>
+    <% @sessions.each do |session| %>
+      <tr>
+        <td><%= session.date.strftime("%m/%d/%Y") %></td>
+        <td><%= session.student.full_name %></td>
+        <td><%= session.length_hours %></td>
+        <td><%= session.details_preview %> <%= link_to "See Details", home_path, class: "small-yellow-link" %></td>
+        <td><%= link_to "Delete", destroy_user_session_path(session), class: "small-red-link" %></td>
+      </tr>
+    <% end %>
+  </table>
 <% end %>
 
 <%= content_for :additional_content do %>

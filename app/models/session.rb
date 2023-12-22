@@ -13,4 +13,12 @@ class Session < ApplicationRecord
       errors.add(:engagement, "must have a tutor")
     end
   end
+
+  def length_hours
+    length_fifteen_minutes.to_f / 4
+  end
+
+  def details_preview
+    "#{details[0..20]}..."
+  end
 end
