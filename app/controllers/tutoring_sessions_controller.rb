@@ -3,9 +3,6 @@ class TutoringSessionsController < ApplicationController
     @sessions = current_user.tutor_sessions
 
     @new_session = TutoringSession.new(date: Date.today)
-    # @students = current_user.engaged_students.to_a.map do |student|
-    #   [student.full_name, student.id]
-    # end
     @students = current_user.engaged_students.to_a
   end
 
