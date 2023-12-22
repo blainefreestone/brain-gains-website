@@ -9,10 +9,26 @@
 <%= content_for :main_content do %>
   <h2 class="low-margin">Log New Session</h2>
   <div class="module">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. E
-    xplicabo a consectetur ea nam cum, voluptatibus mollitia earum
-    quas voluptas, quasi sunt voluptatem tempore perspiciatis accus
-    antium! Dignissimos quod architecto obcaecati voluptas?
+    <%= form_with model: @new_session, url: user_tutoring_sessions_path do |form| %>
+      <div class="field">
+        <%= form.label :date %>
+        <%= form.date_field :date %>
+      </div>
+      <div class="field">
+        <%= label_tag "student_id", "Student" %>
+        <%= select_tag "student_id", options_from_collection_for_select(@students, 'id', 'full_name') %>
+      </div>
+      <div>
+        <%= label_tag "num_hours", "Duration" %>
+        <%= select_tag "num_hours", options_for_select([1, 2, 3]) %>
+        <%= select_tag "num_fifteen_minutes", options_for_select([[":00", 0], [":15", 1], [":30", 2], [":45", 3]]) %>
+      </div>
+      <div class="field">
+        <%= form.label :details %>
+        <%= form.text_area :details %>
+      </div>
+      <%= form.submit "Log Session" %>
+    <% end %>
   </div>
   <h2 class="low-margin">Logged Sessions</h2>
   <table class="module">

@@ -1,5 +1,5 @@
 class TutoringSession < ApplicationRecord
-  validates :date, :details, :engagement, presence: true
+  validates :date, :engagement, presence: true
   validates :length_fifteen_minutes, presence: true, comparison: { greater_than: 3 }
   validate :engagement_must_have_tutor
 
