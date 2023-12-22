@@ -28,7 +28,13 @@
         <td><%= session.student.full_name %></td>
         <td><%= session.length_hours %></td>
         <td><%= session.details_preview %> <%= link_to "See Details", home_path, class: "small-yellow-link" %></td>
-        <td><%= link_to "Delete", destroy_user_session_path(session), class: "small-red-link" %></td>
+        <td>
+            <%= link_to "Delete", user_tutoring_session_path(session), 
+                  class: "small-red-link", 
+                  data: { turbo_method: :delete,
+                          turbo_confirm: "Are you sure?" }
+            %>
+        </td>
       </tr>
     <% end %>
   </table>
