@@ -1,0 +1,28 @@
+<%= content_for :header_title do %>
+  Your <em>Sessions</em>
+<% end %>
+
+<%= content_for :header_right_module do %>
+  <%= render partial: "users/personal_information_preview", locals: { user: current_user } %>
+<% end %>
+
+<%= content_for :main_content do %>
+  <h2 class="low-margin">Log New Session</h2>
+  <div class="module">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. E
+    xplicabo a consectetur ea nam cum, voluptatibus mollitia earum
+    quas voluptas, quasi sunt voluptatem tempore perspiciatis accus
+    antium! Dignissimos quod architecto obcaecati voluptas?
+  </div>
+  <h2 class="low-margin">Logged Sessions</h2>
+  <div class="module">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumen
+    da possimus eaque placeat fugit odio iusto? Porro,
+     tempore. Ullam natus nisi laboriosam quos ab ipsum i
+     taque facere, perspiciatis aspernatur similique distinctio!
+  </div>
+<% end %>
+
+<%= content_for :additional_content do %>
+  <%= render "shared/login_items" %>
+<% end %>
