@@ -1,2 +1,31 @@
-Show
-<%= @application_present %>
+<%= content_for :header_title do %>
+  Tutor <em>Application</em>
+<% end %>
+
+<%= content_for :header_right_module do %>
+  <%= render partial: "users/personal_information_preview", locals: { user: current_user } %>
+<% end %>
+
+<%= content_for :main_content do %>
+  <div class="modular">
+    <div class="module">
+      <% unless @application_present %>
+        <h2>New Tutor Application</h2>
+        <p>Begin your application to become a tutor with Brain Gains Tutoring, Idaho!</p>
+        <p>
+          There is currently no save functionality for an unfinished application, so make
+          sure you have about 20 minutes to complete the application before you begin!
+        </p>
+        <%= button_to "Begin Application", new_user_tutor_application_path, method: :get, type: :button %>
+      <% else %>
+        <h2>Edit Tutor Application</h2>
+        <p>Edit your completed application to become a tutor with Brain Gains Tutoring, Idaho.</p>
+        <%= button_to "Edit Application", edit_user_tutor_application_path, method: :get, type: :button %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<%= content_for :additional_content do %>
+  <%= render "shared/login_items" %>
+<% end %>
