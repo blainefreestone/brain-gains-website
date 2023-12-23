@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_17_191411) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_22_080243) do
+  create_table "engagements", force: :cascade do |t|
+    t.integer "tutor_id"
+    t.integer "student_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "details"
+    t.string "subject"
+    t.text "availability"
+    t.integer "fifteen_minutes_per_week"
+    t.index ["student_id"], name: "index_engagements_on_student_id"
+    t.index ["tutor_id"], name: "index_engagements_on_tutor_id"
+  end
+
   create_table "leads", force: :cascade do |t|
     t.string "name"
     t.string "phone_number"
@@ -33,6 +46,16 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_17_191411) do
     t.index ["user_id"], name: "index_personal_informations_on_user_id"
   end
 
+  create_table "tutoring_sessions", force: :cascade do |t|
+    t.date "date"
+    t.integer "engagement_id", null: false
+    t.integer "length_fifteen_minutes"
+    t.text "details"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["engagement_id"], name: "index_tutoring_sessions_on_engagement_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -52,9 +75,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_17_191411) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
+    t.boolean "approved", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "engagements", "users", column: "student_id"
+  add_foreign_key "engagements", "users", column: "tutor_id"
   add_foreign_key "personal_informations", "users"
+  add_foreign_key "tutoring_sessions", "engagements"
 end

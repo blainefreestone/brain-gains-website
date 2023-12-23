@@ -1,0 +1,46 @@
+<%= content_for :header_title do %>
+  <em>Engagement</em> Details
+<% end %>
+
+<%= content_for :header_right_module do %>
+  <%= render partial: "users/personal_information_preview", locals: { user: current_user } %>
+<% end %>
+
+<%= content_for :main_content do %>
+  <div class="modular">
+    <div class="module">
+      <h2>Student Information</h2>
+      Name
+      <h3 class="low-margin"><%= @engagement.student.full_name %></h2>
+      Phone Number
+      <h3 class="low-margin"><%= @engagement.student.personal_information.phone_number %></h3>
+      Address
+      <h3 class="low-margin"><%= @engagement.student.full_address %></h3>
+      Grade
+      <h3 class="low-margin"><%= @engagement.student.personal_information.grade %></h3>
+    </div>
+    <div class="module">
+      <h2>Engagement Information</h2>
+      Subject
+      <h3 class="low-margin"><%= @engagement.subject %></h2>
+      Phone Number
+      <h3 class="low-margin"><%= @engagement.student.personal_information.phone_number %></h3>
+      Availability
+      <h3 class="low-margin"><%= @engagement.availability %></h3>
+      Frequency
+      <h3 class="low-margin"><%= @engagement.hours_per_week.to_s + " hours / week" %></h3>
+    </div>
+    <div class="module">
+      <h2>Engagement Details</h2>
+      <%= @engagement.details %>
+    </div>
+    <div class="module">
+      <h2>Log a Session</h2>
+      Module under construction.
+    </div>
+  </div>
+<% end %>
+
+<%= content_for :additional_content do %>
+  <%= render "shared/login_items" %>
+<% end %>

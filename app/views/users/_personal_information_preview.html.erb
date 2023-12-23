@@ -1,12 +1,12 @@
 <div style="height: 18rem; display: flex; flex-direction: column; justify-content: space-between">
   <div>
     Full Name
-    <h3 class="low-margin"><%= user.personal_information.first_name + " " + user.personal_information.last_name %></h3>
+    <h3 class="low-margin"><%= user.full_name %></h3>
   
     Address
     <h3 class="low-margin">
-      <% if user.personal_information.street_address && user.personal_information.city && user.personal_information.zipcode %>
-        <%= user.personal_information.street_address + ", " + user.personal_information.city + " " + user.personal_information.zipcode %>
+      <% if user.full_address %>
+        <%= user.full_address %>
       <% else %>
         Information needed!
       <% end %>

@@ -7,9 +7,32 @@
 <% end %>
 
 <%= content_for :main_content do %>
-
+  <div class="modular">
+    <div class="module">
+      <h2>Log a Session</h2>
+      <p>
+        Use this page to log and view all tutoring sessions. Please update
+        your session log frequently and carefully to ensure accuracy.
+      </p>
+      <%= button_to "See and Log Sessions", user_tutoring_sessions_path, method: :get, type: :button %>
+    </div>
+    <% @engagements.each do |engagement| %>
+      <div class="module">
+        <div style="margin-bottom: 2rem;">
+          <h2><%= engagement.student.full_name %></h2>
+          Subject
+          <h3 class="low-margin"><%= engagement.subject %></h3>
+          Frequency
+          <h3 class="low-margin"><%= engagement.hours_per_week %> hours / week</h3>
+          Phone Number
+          <h3 class="low-margin"><%= engagement.student.personal_information.phone_number %></h3>
+        </div>
+        <%= button_to "See Engagement", user_engagement_path(engagement), method: :get, type: :button %>
+      </div>
+    <% end %>
+  </div>
 <% end %>
 
 <%= content_for :additional_content do %>
-  <%= render "login_items" %>
+  <%= render "shared/login_items" %>
 <% end %>
