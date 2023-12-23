@@ -19,6 +19,6 @@ class TutoringSession < ApplicationRecord
   end
 
   def details_preview
-    "#{details[0..20]}..."
+    details.present? ? "#{details[0..20]}..." : "No details for this session"
   end
 end

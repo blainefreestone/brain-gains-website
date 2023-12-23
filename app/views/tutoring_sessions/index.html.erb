@@ -59,7 +59,7 @@
       <%= form.submit "Log Session", class: "button", id: "session-form-submit" %>
     <% end %>
   </div>
-  <h2 class="low-margin">Logged Sessions</h2>
+  <h2 class="low-margin" style="margin-top: 2rem;">Logged Sessions</h2>
   <table class="module">
     <tr>
       <th>Date</th>
@@ -72,7 +72,7 @@
         <td><%= session.date.strftime("%m/%d/%Y") %></td>
         <td><%= session.student.full_name %></td>
         <td><%= session.length_hours %></td>
-        <td><%= session.details_preview %> <%= link_to "See Details", home_path, class: "small-yellow-link" %></td>
+        <td><%= session.details_preview %> <%= link_to "See Details", home_path, class: "small-yellow-link" if session.details.present? %></td>
         <td>
             <%= link_to "Delete", user_tutoring_session_path(session), 
                   class: "small-red-link", 
