@@ -4,7 +4,10 @@ class UsersController < ApplicationController
   def show
     @user = current_user
 
-    if current_user.tutor?
+    if current_user.tutor? && current_user.approved?
+      @engagements = current_user.student_engagements
+      render "tutor_show"
+    elsif current_user.tutor? && !current_user.approved?
       @engagements = current_user.student_engagements
       render "tutor_show"
     elsif current_user.student?
