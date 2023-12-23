@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     resource :personal_information, only: [:show, :edit, :update]
     resources :engagements, only: [:show]
     resources :tutoring_sessions, only: [:index, :create, :update, :destroy]
-    resource :tutor_application, except: [:show]
+    resource :tutor_application
   end
 
   # Lead create

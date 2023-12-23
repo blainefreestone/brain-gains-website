@@ -1,4 +1,7 @@
 class TutorApplicationsController < ApplicationController
+  def show
+  end
+  
   def new
   end
 
