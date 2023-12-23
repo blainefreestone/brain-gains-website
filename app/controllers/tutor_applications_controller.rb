@@ -1,5 +1,6 @@
 class TutorApplicationsController < ApplicationController
   def show
+    @application_present = current_user.tutor_application.present?
   end
   
   def new
