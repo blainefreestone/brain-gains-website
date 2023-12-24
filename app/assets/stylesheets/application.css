@@ -255,6 +255,11 @@ table.module, th, td {
   font-size: 1.1rem; 
 }
 
+#application textarea {
+  width: 95%;
+  height: 14rem;
+}
+
 /* form.session-form {
   display: grid;
   grid-template-columns: 2fr 1fr;

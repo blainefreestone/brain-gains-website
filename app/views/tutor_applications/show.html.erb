@@ -8,6 +8,13 @@
 
 <%= content_for :main_content do %>
   <div class="modular">
+    <% if @application_present %>
+      <div class="module">
+        <h2>Thanks for submitting your application!</h2>
+        We will review your application and get back to you soon. Please make sure
+        you completely fill out your <%= link_to "personal information", edit_user_personal_information_path %> if you haven't already done so.
+      </div>
+    <% end %>
     <div class="module">
       <% unless @application_present %>
         <h2>New Tutor Application</h2>
@@ -24,11 +31,6 @@
       <% end %>
     </div>
   </div>
-  <% if @application_present %>
-    <h2>Thanks for submitting your application!</h2>
-    We will review your application and get back to you soon. Please make sure
-    you fill out your <%= link_to "personal information", edit_user_personal_information_path %> if you haven't already done so.
-  <% end %>
 <% end %>
 
 <%= content_for :additional_content do %>
