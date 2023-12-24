@@ -1,1 +1,19 @@
-New
+<%= content_for :header_title do %>
+  Tutor <em>Application</em>
+<% end %>
+
+<%= content_for :header_right_module do %>
+  <%= render partial: "users/personal_information_preview", locals: { user: current_user } %>
+<% end %>
+
+<%= content_for :main_content do %>
+  <div class="modular">
+    <div class="module">
+
+    </div>
+  </div>
+<% end %>
+
+<%= content_for :additional_content do %>
+  <%= render "shared/login_items" %>
+<% end %>

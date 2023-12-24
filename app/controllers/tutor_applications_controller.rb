@@ -4,6 +4,7 @@ class TutorApplicationsController < ApplicationController
   end
   
   def new
+    @application = current_user.build_tutor_application
   end
 
   def create

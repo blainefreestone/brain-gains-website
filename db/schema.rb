@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_23_185157) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_24_035502) do
   create_table "application_questions", force: :cascade do |t|
     t.text "question_text"
     t.text "answer_text"
@@ -63,6 +63,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_23_185157) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "tutor_id"
+    t.text "educational_history"
+    t.text "tutoring_skills"
+    t.text "resume"
     t.index ["tutor_id"], name: "index_tutor_applications_on_tutor_id"
   end
 

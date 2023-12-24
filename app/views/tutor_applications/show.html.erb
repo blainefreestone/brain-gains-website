@@ -24,6 +24,11 @@
       <% end %>
     </div>
   </div>
+  <% if @application_present %>
+    <h2>Thanks for submitting your application!</h2>
+    We will review your application and get back to you soon. Please make sure
+    you fill out your <%= link_to "personal information", edit_user_personal_information_path %> if you haven't already done so.
+  <% end %>
 <% end %>
 
 <%= content_for :additional_content do %>
