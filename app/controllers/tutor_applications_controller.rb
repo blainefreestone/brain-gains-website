@@ -1,4 +1,7 @@
 class TutorApplicationsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :must_be_tutor
+  
   def show
     @application_present = current_user.tutor_application.present?
   end
@@ -39,5 +42,11 @@ class TutorApplicationsController < ApplicationController
 
   def tutor_application_params
     params.require(:tutor_application).permit(:educational_history, :tutoring_skills, :resume)
+  end
+
+  def must_be_tutor
+    unless current_user.tutor?
+      redirect_to root_path
+    end
   end
 end

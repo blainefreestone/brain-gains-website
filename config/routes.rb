@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get '/about', to: 'pages#about'
   get '/how_it_works', to: 'pages#how_it_works'
 
+  # Tutor Application Shortcut
+  get '/apply', to: 'tutor_applications#show'
+
   # Users
   devise_for :users, controllers: {
     registrations: 'users/registrations'
