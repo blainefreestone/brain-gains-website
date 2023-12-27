@@ -11,6 +11,7 @@ class TutorApplicationsController < ApplicationController
     @application = current_user.build_tutor_application(tutor_application_params)
 
     if @application.save
+      @application.add_subjects params[:subjects]
       redirect_to user_tutor_application_path
     else
       render :new, status: :unprocessable_entity

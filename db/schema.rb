@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_24_035502) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_27_051403) do
   create_table "application_questions", force: :cascade do |t|
     t.text "question_text"
     t.text "answer_text"
@@ -57,6 +57,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_24_035502) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "tutor_application_id", null: false
+    t.index ["tutor_application_id"], name: "index_subjects_on_tutor_application_id"
   end
 
   create_table "tutor_applications", force: :cascade do |t|
@@ -106,6 +108,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_24_035502) do
   add_foreign_key "engagements", "users", column: "student_id"
   add_foreign_key "engagements", "users", column: "tutor_id"
   add_foreign_key "personal_informations", "users"
+  add_foreign_key "subjects", "tutor_applications"
   add_foreign_key "tutor_applications", "users", column: "tutor_id"
   add_foreign_key "tutoring_sessions", "engagements"
 end
