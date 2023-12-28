@@ -1,6 +1,6 @@
 class TutorApplication < ApplicationRecord
   validates :educational_history, :tutoring_skills, presence: true
-  has_many :subjects
+  has_many :subjects, dependent: :destroy
 
   belongs_to :tutor, class_name: "User"
 
