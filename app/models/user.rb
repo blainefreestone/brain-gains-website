@@ -5,9 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :lockable, :trackable, :timeoutable
 
-  before_create :set_role
-
+  # Personal Information associations.
   has_one :personal_information
+  delegate :first_name, :last_name, :phone_number, :street_address, :city, :zipcode, to: :personal_information
+
   accepts_nested_attributes_for :personal_information
 
   # Student engagement associations for users that are tutors.
@@ -20,23 +21,25 @@ class User < ApplicationRecord
   has_one :engaged_tutor, through: :tutor_engagement, source: :tutor
   has_many :student_sessions, through: :tutor_engagement, source: :tutoring_sessions
 
+  # Application associatons.
   has_one :tutor_application, foreign_key: "tutor_id"
+  has_many :subjects, through: :tutor_application
 
-  def set_role
-    if student == true
-      self.tutor = false
-    else
-      self.tutor = true
-    end
+  def set_default_roles
+    self.tutor = if student
+                   false
+                 else
+                   true
+                 end
   end
 
   def full_name
-    "#{personal_information.first_name} #{personal_information.last_name}"
+    "#{first_name} #{last_name}"
   end
 
   def full_address
-    return nil unless personal_information.street_address.present?
+    return nil unless street_address.present?
 
-    "#{personal_information.street_address}, #{personal_information.city} #{personal_information.zipcode}"
+    "#{street_address}, #{city} #{zipcode}"
   end
 end

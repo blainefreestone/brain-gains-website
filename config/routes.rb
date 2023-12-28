@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'sessions/index'
-  get 'engagements/show'
   # Static home pages
   get '/home', to: 'pages#home'
   get '/about', to: 'pages#about'
