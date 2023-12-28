@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   # User
   resource :user, only: [:show] do
-    resource :personal_information, only: [:show, :edit, :update]
+    resource :personal_information, only: [:edit, :update]
     resources :engagements, only: [:show]
     resources :tutoring_sessions, only: [:index, :create, :update, :destroy]
     resource :tutor_application
