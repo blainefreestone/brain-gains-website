@@ -1,9 +1,17 @@
-<% if user_signed_in? %>
-  <li>
-  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
-  </li>
-<% else %>
-  <li>
-  <%= link_to('Login', new_user_session_path) %>  
-  </li>
-<% end %>
+<ul style="list-style-type: none; padding-left: 1rem;">
+  <li><%= link_to('Home', root_path) %></li>
+  
+  <li><%= link_to('Back', :back) %></li>
+</ul>
+
+<ul style="list-style-type: none; padding-left: 1rem;">
+  <% if user_signed_in? %>
+    <li>
+    <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+    </li>
+  <% else %>
+    <li>
+    <%= link_to('Login', new_user_session_path) %>
+    </li>
+  <% end %>
+</ul>
