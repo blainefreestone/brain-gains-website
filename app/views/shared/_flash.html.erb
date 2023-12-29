@@ -1,0 +1,5 @@
+<% if flash.key? :error %>
+  <div class="alert" style="font-size: 1rem;"><%= flash[:error] %></div>
+<% elsif flash.key? :success %>
+  <div class="success"><%= flash[:success] %></div>
+<% end %>

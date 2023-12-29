@@ -1,19 +1,19 @@
 <div style="height: 18rem; display: flex; flex-direction: column; justify-content: space-between">
   <div>
     Full Name
-    <h3 class="low-margin"><%= user.full_name %></h3>
+    <h3 class="low-margin"><%= current_user.full_name %></h3>
   
     Address
     <h3 class="low-margin">
-      <% if user.full_address %>
-        <%= user.full_address %>
+      <% if current_user.full_address %>
+        <%= current_user.full_address %>
       <% else %>
         Information needed!
       <% end %>
     </h3>
   
     Phone Number
-    <h3 class="low-margin"><%= user.personal_information.phone_number %></h3>
+    <h3 class="low-margin"><%= current_user.personal_information.phone_number %></h3>
   </div>
   
   <div style="align-self: flex-end;"><%= link_to "Update Personal Information", edit_user_personal_information_path, class: "small-brown-link" %></div>

@@ -3,7 +3,7 @@
 <% end %>
 
 <%= content_for :header_right_module do %>
-  <%= render partial: "users/personal_information_preview", locals: { user: current_user } %>
+  <%= render partial: "personal_informations/preview" %>
 <% end %>
 
 <%= content_for :main_content do %>
@@ -36,7 +36,7 @@
     </div>
     <div class="module">
       <h2>Log a Session</h2>
-      Module under construction.
+      <%= button_to "See and Log Sessions", user_tutoring_sessions_path, method: :get, type: :button %>
     </div>
   </div>
 <% end %>
