@@ -9,9 +9,7 @@ class TutoringSession < ApplicationRecord
   has_one :tutor, through: :engagement
 
   def engagement_must_have_tutor
-    unless engagement.tutor.present?
-      errors.add(:engagement, "must have a tutor")
-    end
+    errors.add(:engagement, "must have a tutor") unless engagement.tutor.present?
   end
 
   def length_hours

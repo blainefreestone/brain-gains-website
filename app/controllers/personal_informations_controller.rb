@@ -1,4 +1,6 @@
 class PersonalInformationsController < ApplicationController
+  before_action :authenticate_user!
+  
   def edit
     @personal_information = current_user.personal_information || current_user.build_personal_information
   end
