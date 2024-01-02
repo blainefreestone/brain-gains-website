@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :lockable, :trackable, :timeoutable
 
+  after_create :create_stripe_customer
+
   # Personal Information associations.
   has_one :personal_information, dependent: :destroy
   delegate :first_name, :last_name, :phone_number, :street_address, :city, :zipcode, to: :personal_information
@@ -40,5 +42,9 @@ class User < ApplicationRecord
     return nil unless street_address.present?
 
     "#{street_address}, #{city} #{zipcode}"
+  end
+
+  def create_stripe_customer
+    Stripe::Customer.create(email: email)
   end
 end
