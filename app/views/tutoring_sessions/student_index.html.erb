@@ -1,0 +1,37 @@
+<%= content_for :stylesheets do %>
+<% end %>
+
+<%= content_for :header_title do %>
+  Your <em>Sessions</em>
+<% end %>
+
+<%= content_for :header_right_module do %>
+  <%= render partial: "personal_informations/preview" %>
+<% end %>
+
+<%= content_for :main_content do %>
+  <h2 class="low-margin">Logged Sessions</h2>
+  <table class="module">
+    <tr>
+      <th>Date</th>
+      <th>Hours</th>
+      <th>Details</th>
+    </tr>
+    <% @sessions.each do |session| %>
+      <tr>
+        <td><%= session.date.strftime("%m/%d/%Y") %></td>
+        <td><%= session.length_hours %></td>
+        <td><%= session.details_preview %> <%= link_to "See Details", home_path, class: "small-yellow-link" if session.details.present? %></td>
+      </tr>
+    <% end %>
+  </table>
+
+  <p style="margin-top: 2rem;">
+    If you believe any of this information was reported incorrectly by your tutor, feel free to reach out directly to them.
+    Or, you may contact the Brain Gains Idaho email or phone number for help.
+  </p>
+<% end %>
+
+<%= content_for :additional_content do %>
+  <%= render "shared/login_items" %>
+<% end %>

@@ -35,9 +35,14 @@ class TutoringSessionsController < ApplicationController
 
     @new_session = TutoringSession.new(date: Date.today)
     @students = current_user.engaged_students.to_a
+
+    render "tutor_index"
   end
 
   def student_index
+    @sessions = current_user.student_sessions
+
+    render "student_index"
   end
 
   def admin_index
