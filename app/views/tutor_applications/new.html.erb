@@ -11,18 +11,27 @@
     <div class="module">
       <div class="field">
         <%= form.label :educational_history, "What is your educational and work history? How will this make you an effective tutor?" %>
+        <% @application.errors.full_messages_for(:educational_history).each do |message| %>
+          <span class="alert"><%= message %></span>
+        <% end %>
         <%= form.text_area :educational_history %>
       </div>
     </div>
     <div class="module">
       <div class="field">
         <%= form.label :tutoring_skills, "What relevant skills do you have to this position? Why will you be a good tutor?" %>
+        <% @application.errors.full_messages_for(:tutoring_skills).each do |message| %>
+          <span class="alert"><%= message %></span>
+        <% end %>
         <%= form.text_area :tutoring_skills %>
       </div>
     </div>
     <div class="module" style="grid-column: 1 / 3;">
       <div class="field">
         <%= form.label :resume, "You may paste your resume here (optional). Do not worry too much about formatting." %>
+        <% @application.errors.full_messages_for(:resume).each do |message| %>
+          <span class="alert"><%= message %></span>
+        <% end %>
         <%= form.text_area :resume %>
       </div>
     </div>

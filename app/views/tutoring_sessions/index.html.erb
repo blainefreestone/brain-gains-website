@@ -37,6 +37,9 @@
         <div class="field", style="display: flex; flex-direction: row; gap: 3rem">
           <div class="field">
             <%= form.label :date %>
+            <% @new_session.errors.full_messages_for(:date).each do |message| %>
+              <span class="alert"><%= message %></span>
+            <% end %>
             <%= form.date_field :date %>
           </div>
           <div class="field">
@@ -54,6 +57,9 @@
       </div>
       <div class="field">
         <%= form.label :details, "Details (optional)" %>
+        <% @new_session.errors.full_messages_for(:details).each do |message| %>
+          <span class="alert"><%= message %></span>
+        <% end %>
         <%= form.text_area :details %>
       </div>
       <%= form.submit "Log Session", class: "button", id: "session-form-submit" %>

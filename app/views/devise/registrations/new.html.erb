@@ -9,13 +9,19 @@
 <%= content_for :main_content do %>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "modular" }) do |f| %>
     <div class="module" style="display: flex; flex-direction: column; gap: 1rem;">
-      <%= render "devise/shared/error_messages", resource: resource %>
+      <%#= render "devise/shared/error_messages", resource: resource %>
       <div class="field">
         <%= f.label :email %>
+        <% resource.errors.full_messages_for(:email).each do |message| %>
+          <span class="alert"><%= message %></span>
+        <% end %>
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
       <div class="field">
         <%= f.label :password %>
+        <% resource.errors.full_messages_for(:password).each do |message| %>
+          <span class="alert"><%= message %></span>
+        <% end %>
         <% if @minimum_password_length %>
       <span style="font-size: .8rem; font-weight: bold;">(<%= @minimum_password_length %> characters minimum)</span>
         <% end %>
@@ -23,6 +29,9 @@
       </div>
       <div class="field">
         <%= f.label :password_confirmation %>
+        <% resource.errors.full_messages_for(:password_confirmation).each do |message| %>
+          <span class="alert"><%= message %></span>
+        <% end %>
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
       <div class="field">
@@ -41,14 +50,23 @@
       <%= f.fields_for :personal_information do |sub_f| %>
         <div class="field">
           <%= sub_f.label :first_name %>
+          <% resource.errors.full_messages_for(:"personal_information.first_name").each do |message| %>
+            <span class="alert"><%= message %></span>
+          <% end %>
           <%= sub_f.text_field :first_name %>
         </div>
         <div class="field">
           <%= sub_f.label :last_name %>
+          <% resource.errors.full_messages_for(:"personal_information.last_name").each do |message| %>
+            <span class="alert"><%= message %></span>
+          <% end %>
           <%= sub_f.text_field :last_name %>
         </div>
         <div class="field">
           <%= sub_f.label :phone_number %>
+          <% resource.errors.full_messages_for(:"personal_information.phone_number").each do |message| %>
+            <span class="alert"><%= message %></span>
+          <% end %>
           <%= sub_f.text_field :phone_number %>
         </div>
       <% end %>

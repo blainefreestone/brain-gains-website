@@ -10,7 +10,7 @@ class PersonalInformationsController < ApplicationController
       redirect_to root_path
     else
       flash[:error] = "Unable to update your personal information."
-      redirect_to edit_user_personal_information_path
+      render :edit
     end
   end
 
