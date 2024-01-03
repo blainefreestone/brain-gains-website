@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :engagements, only: [:show]
     resources :tutoring_sessions, only: [:index, :create, :update, :destroy]
     resource :tutor_application
+    get '/pricing', to: 'stripe/checkout#pricing'
   end
 
   # Lead create
