@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     post '/stripe/checkout', to: 'stripe/checkout#create'
     get '/stripe/checkout/success', to: 'stripe/checkout#success'
     get '/stripe/checkout/failure', to: 'stripe/checkout#failure'
+    post '/stripe/billing_portal', to: 'stripe/billing_portal#create'
   end
 
   # Lead create

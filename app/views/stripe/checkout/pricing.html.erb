@@ -18,6 +18,15 @@
         </form> %>
       </div>
     <% end %>
+    <div class="module">
+      <h2>Stripe Subscription Portal</h2>
+      <p>
+        Use this link to access the Stripe subscription portal
+        to manage your payment plan and billing information.
+      </p>
+      <p>You can also use this link to cancel your subscription.</p>
+      <%= button_to "Billing Portal", stripe_billing_portal_user_path, data: {turbo: false} %>
+    </div>
   </div>
 <% end %>
 

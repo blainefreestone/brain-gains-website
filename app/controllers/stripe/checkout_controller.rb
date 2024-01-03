@@ -22,12 +22,12 @@ class Stripe::CheckoutController < ApplicationController
   end
 
   def success
-    flash[:notice] = "success"
-    redirect_to pricing_path
+    flash[:notice] = "You have successfully subscribed."
+    redirect_to pricing_user_path
   end
 
-  def cancel
-    flash[:notice] = "failure"
-    redirect_to pricing_path
+  def failure
+    flash[:notice] = "We were not able to process your subscription."
+    redirect_to pricing_user_path
   end
 end

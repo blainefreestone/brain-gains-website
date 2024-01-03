@@ -1,0 +1,11 @@
+class Stripe::BillingPortalController < ApplicationController
+  before_action :authenticate_user!
+
+  def create
+    session = Stripe::BillingPortal::Session.create({
+                                                      customer: current_user.stripe_customer_id,
+                                                      return_url: pricing_user_url
+                                                    })
+    redirect_to session.url, allow_other_host: true
+  end
+end
