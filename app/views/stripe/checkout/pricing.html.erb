@@ -11,6 +11,11 @@
       <div class="module">
         <%= price[:unit_amount] %> cents
         per <%= price[:recurring][:interval] %>
+        <%= button_to "Purchase", stripe_checkout_user_path(price_id: price.id), data: {turbo: false} %>
+        <%# <form action="/create-portal-session" method="POST">
+          <input type="hidden" id="session-id" name="session_id" value="" />
+          <button id="checkout-and-portal-button" type="submit">Manage your billing information</button>
+        </form> %>
       </div>
     <% end %>
   </div>

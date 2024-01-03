@@ -19,6 +19,9 @@ Rails.application.routes.draw do
     resources :tutoring_sessions, only: [:index, :create, :update, :destroy]
     resource :tutor_application
     get '/pricing', to: 'stripe/checkout#pricing'
+    post '/stripe/checkout', to: 'stripe/checkout#create'
+    get '/stripe/checkout/success', to: 'stripe/checkout#success'
+    get '/stripe/checkout/failure', to: 'stripe/checkout#failure'
   end
 
   # Lead create
