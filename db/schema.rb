@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_27_055028) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_02_232428) do
   create_table "application_questions", force: :cascade do |t|
     t.text "question_text"
     t.text "answer_text"
@@ -101,6 +101,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_27_055028) do
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
     t.boolean "approved", default: false
+    t.string "stripe_customer_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

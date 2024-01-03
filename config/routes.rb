@@ -23,6 +23,9 @@ Rails.application.routes.draw do
   # Lead create
   resources :leads, only: [:create]
 
+  # Stripe
+  post 'stripe/webhooks', to: 'stripe/webhooks#create'
+
   # Root path
   root "application#root"
 

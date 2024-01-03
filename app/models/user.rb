@@ -45,6 +45,8 @@ class User < ApplicationRecord
   end
 
   def create_stripe_customer
+    return unless student?
+
     Stripe::Customer.create(email: email)
   end
 end
