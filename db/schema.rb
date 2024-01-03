@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_02_232428) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_03_063917) do
   create_table "application_questions", force: :cascade do |t|
     t.text "question_text"
     t.text "answer_text"
@@ -39,6 +39,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_02_232428) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "offers", force: :cascade do |t|
+    t.string "stripe_price_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "personal_informations", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -51,6 +57,30 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_02_232428) do
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
     t.index ["user_id"], name: "index_personal_informations_on_user_id"
+  end
+
+  create_table "stripe_offers", force: :cascade do |t|
+    t.string "price_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "stripe_student_offerings", force: :cascade do |t|
+    t.integer "student_id", null: false
+    t.integer "offer_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["offer_id"], name: "index_stripe_student_offerings_on_offer_id"
+    t.index ["student_id"], name: "index_stripe_student_offerings_on_student_id"
+  end
+
+  create_table "student_offerings", force: :cascade do |t|
+    t.integer "offer_id", null: false
+    t.integer "student_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["offer_id"], name: "index_student_offerings_on_offer_id"
+    t.index ["student_id"], name: "index_student_offerings_on_student_id"
   end
 
   create_table "subjects", force: :cascade do |t|
@@ -109,6 +139,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_02_232428) do
   add_foreign_key "engagements", "users", column: "student_id"
   add_foreign_key "engagements", "users", column: "tutor_id"
   add_foreign_key "personal_informations", "users"
+  add_foreign_key "stripe_student_offerings", "offers"
+  add_foreign_key "stripe_student_offerings", "users", column: "student_id"
+  add_foreign_key "student_offerings", "offers"
+  add_foreign_key "student_offerings", "users", column: "student_id"
   add_foreign_key "subjects", "tutor_applications"
   add_foreign_key "tutor_applications", "users", column: "tutor_id"
   add_foreign_key "tutoring_sessions", "engagements"

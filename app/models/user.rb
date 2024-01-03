@@ -26,6 +26,10 @@ class User < ApplicationRecord
   has_one :tutor_application, foreign_key: "tutor_id", dependent: :destroy
   has_many :subjects, through: :tutor_application
 
+  # Offer associations.
+  has_many :student_offerings, foreign_key: "student_id", dependent: :destroy
+  has_many :offers, through: :student_offerings
+
   def set_default_roles
     self.tutor = if student
                    false
