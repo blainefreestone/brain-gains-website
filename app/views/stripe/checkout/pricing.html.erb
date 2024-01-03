@@ -7,9 +7,12 @@
 
 <%= content_for :main_content do %>
   <div class="modular">
-    <div class="module">
-      <h2>Test</h2>
-    </div>
+    <% @prices.each do |price| %>
+      <div class="module">
+        <%= price[:unit_amount] %> cents
+        per <%= price[:recurring][:interval] %>
+      </div>
+    <% end %>
   </div>
 <% end %>
 
