@@ -9,13 +9,10 @@
   <div class="modular">
     <% @prices.each do |price| %>
       <div class="module">
-        <%= price[:unit_amount] %> cents
-        per <%= price[:recurring][:interval] %>
+        <h3 class="low-margin">Get <%= price.metadata.hours_per_week %> Hours per Week for</h2>
+        <h2 class="low-margin"><%= number_to_currency(price.metadata.price_per_hour.to_f) %> / hour</h1>
+        <p style="margin-top: 0;">billed <%= "#{price.recurring.interval}ly" %></p>
         <%= button_to "Purchase", stripe_checkout_user_path(price_id: price.id), data: {turbo: false} %>
-        <%# <form action="/create-portal-session" method="POST">
-          <input type="hidden" id="session-id" name="session_id" value="" />
-          <button id="checkout-and-portal-button" type="submit">Manage your billing information</button>
-        </form> %>
       </div>
     <% end %>
     <div class="module">
