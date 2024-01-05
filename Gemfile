@@ -64,7 +64,7 @@ group :development do
   # gem "spring"
 end
 
-gem "stripe"
+gem "stripe", "~> 10.4.0"
 
 gem "devise", "~> 4.9"
 

@@ -269,7 +269,7 @@ DEPENDENCIES
   sprockets-rails
   sqlite3 (~> 1.4)
   stimulus-rails
-  stripe
+  stripe (~> 10.4.0)
   turbo-rails
   tzinfo-data
   web-console
