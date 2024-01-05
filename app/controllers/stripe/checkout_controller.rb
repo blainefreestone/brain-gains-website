@@ -3,7 +3,9 @@ class Stripe::CheckoutController < ApplicationController
 
   def pricing
     offers = current_user.offers
-    @prices = offers.each_with_object([]) { |offer, prices| prices.push(Stripe::Price.retrieve(offer.stripe_price_id)) }
+    unless current_user.subscribed?
+      @prices = offers.each_with_object([]) { |offer, prices| prices.push(Stripe::Price.retrieve(offer.stripe_price_id)) }
+    end
   end
 
   def create

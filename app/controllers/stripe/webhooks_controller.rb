@@ -40,7 +40,10 @@ class Stripe::WebhooksController < ApplicationController
       user.update(stripe_customer_id: customer.id)
 
     when 'customer.subscription.deleted'
-      puts "Subscription canceled: #{event.id}"
+      customer_id = data_object.customer
+      user = User.find_by(stripe_customer_id: customer_id)
+
+      user.update(subscribed: false)
 
     when 'customer.subscription.updated'
       puts "Subscription updated: #{event.id}"
@@ -50,7 +53,7 @@ class Stripe::WebhooksController < ApplicationController
       user = User.find_by(stripe_customer_id: customer_id)
 
       fifteen_minutes_at_create = data_object.plan.metadata.fifteen_minutes_per_renewal
-      user.update(fifteen_minutes: fifteen_minutes_at_create)
+      user.update(fifteen_minutes: fifteen_minutes_at_create, subscribed: true)
 
     when 'customer.subscription.trial_will_end'
       puts "Subscription trial will end: #{event.id}"

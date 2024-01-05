@@ -7,23 +7,26 @@
 
 <%= content_for :main_content do %>
   <div class="modular">
-    <% @prices.each do |price| %>
+    <% unless current_user.subscribed? %>
+      <% @prices.each do |price| %>
+        <div class="module">
+          <h3 class="low-margin">Get <%= price.metadata.hours_per_week %> Hours per Week for</h2>
+          <h2 class="low-margin"><%= number_to_currency(price.metadata.price_per_hour.to_f) %> / hour</h1>
+          <p style="margin-top: 0;">billed <%= "#{price.recurring.interval}ly" %></p>
+          <%= button_to "Purchase", stripe_checkout_user_path(price_id: price.id), data: {turbo: false} %>
+        </div>
+      <% end %>
+    <% else %>
       <div class="module">
-        <h3 class="low-margin">Get <%= price.metadata.hours_per_week %> Hours per Week for</h2>
-        <h2 class="low-margin"><%= number_to_currency(price.metadata.price_per_hour.to_f) %> / hour</h1>
-        <p style="margin-top: 0;">billed <%= "#{price.recurring.interval}ly" %></p>
-        <%= button_to "Purchase", stripe_checkout_user_path(price_id: price.id), data: {turbo: false} %>
+        <h2>Stripe Subscription Portal</h2>
+        <p>
+          Use this link to access the Stripe subscription portal
+          to manage your payment plan and billing information.
+        </p>
+        <p>You can also use this link to cancel your subscription.</p>
+        <%= button_to "Billing Portal", stripe_billing_portal_user_path, data: {turbo: false} %>
       </div>
     <% end %>
-    <div class="module">
-      <h2>Stripe Subscription Portal</h2>
-      <p>
-        Use this link to access the Stripe subscription portal
-        to manage your payment plan and billing information.
-      </p>
-      <p>You can also use this link to cancel your subscription.</p>
-      <%= button_to "Billing Portal", stripe_billing_portal_user_path, data: {turbo: false} %>
-    </div>
   </div>
 <% end %>
 
