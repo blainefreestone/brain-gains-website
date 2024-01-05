@@ -10,6 +10,7 @@
 <% end %>
 
 <%= content_for :main_content do %>
+  <em>Current Balance:</em> <%= current_user.fifteen_minutes.to_f / 4 %> hours
   <h2 class="low-margin">Logged Sessions</h2>
   <table class="module">
     <tr>

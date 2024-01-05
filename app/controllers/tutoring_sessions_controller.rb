@@ -8,7 +8,7 @@ class TutoringSessionsController < ApplicationController
   end
 
   def create
-    engagement = current_user.student_engagements.where(student_id: params[:student_id]).first
+    engagement = current_user.student_engagements.find_by(student_id: params[:student_id])
     @session = engagement.tutoring_sessions.new(tutoring_session_params)
 
     if @session.save

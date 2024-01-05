@@ -89,6 +89,7 @@
       </tr>
     <% end %>
   </table>
+  <p><em>Total Hours:</em> <%= current_user.fifteen_minutes.to_f / 4 %></p>
 <% end %>
 
 <%= content_for :additional_content do %>
