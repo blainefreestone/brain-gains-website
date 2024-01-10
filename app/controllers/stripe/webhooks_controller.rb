@@ -1,4 +1,6 @@
 class Stripe::WebhooksController < ApplicationController
+  skip_before_action :verify_authenticity_token
+  
   def create
     webhook_secret = Rails.application.credentials[:stripe][:webhooks]
     payload = request.body.read
