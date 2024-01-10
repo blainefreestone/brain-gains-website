@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def root
+    QrCode.find_by(id: params[:qr_id]).increase_count if params[:qr_id].present?
+
     if current_user.present?
       redirect_to user_path
     else

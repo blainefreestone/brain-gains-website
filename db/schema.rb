@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_05_020851) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_10_024305) do
   create_table "application_questions", force: :cascade do |t|
     t.text "question_text"
     t.text "answer_text"
@@ -57,6 +57,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_05_020851) do
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
     t.index ["user_id"], name: "index_personal_informations_on_user_id"
+  end
+
+  create_table "qr_codes", force: :cascade do |t|
+    t.string "description"
+    t.integer "count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "stripe_offers", force: :cascade do |t|
