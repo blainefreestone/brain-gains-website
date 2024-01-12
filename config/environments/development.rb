@@ -43,7 +43,7 @@ Rails.application.configure do
     port: 587,
     domain: "braingainsidaho.com",
     user_name: "apikey",
-    password: "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",
+    password: Rails.application.credentials.sendgrid[:secret]
   }
   config.action_mailer.default_url_options = {host: "localhost:3000"}
 
