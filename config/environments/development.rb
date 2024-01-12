@@ -39,13 +39,15 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   # config.action_mailer.delivery_method = :smtp
   config.action_mailer.delivery_method = :letter_opener
-  config.action_mailer.smtp_settings = {
-    address: "smtp.sendgrid.net",
-    port: 587,
-    domain: "braingainsidaho.com",
-    user_name: "apikey",
-    password: Rails.application.credentials.sendgrid[:secret]
-  }
+  if Rails.application.credentials.sendgrid.present?
+    config.action_mailer.smtp_settings = {
+      address: "smtp.sendgrid.net",
+      port: 587,
+      domain: "braingainsidaho.com",
+      user_name: "apikey",
+      password: Rails.application.credentials.sendgrid[:secret]
+    }
+  end
   config.action_mailer.default_url_options = {host: "localhost:3000"}
 
   # Don't care if the mailer can't send.
